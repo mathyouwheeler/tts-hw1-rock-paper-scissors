@@ -20,12 +20,12 @@ while(!gameIsWon) {
 		console.log("Round " + roundCount + " is a draw");
 	}
 
-	if ((playerOneHand === 0 && playerTwoHand === 1) || (playerOneHand === 1 && playerTwoHand === 2) || (playerOneHand === 2 && playerTwoHand === 0)) {
+	else if ((playerOneHand === 0 && playerTwoHand === 1) || (playerOneHand === 1 && playerTwoHand === 2) || (playerOneHand === 2 && playerTwoHand === 0)) {
 		console.log("Round " + roundCount + " winner is= " + playerTwoName);
 		playerTwoWins++;
 	}
-
-	if ((playerOneHand === 0 && playerTwoHand === 2) || (playerOneHand === 1 && playerTwoHand === 0) || (playerOneHand === 2 && playerTwoHand === 1)) {
+	
+	else {
 		console.log("Round " + roundCount + " winner is= " + playerOneName);
 		playerOneWins++;
 	}
