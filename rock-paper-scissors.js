@@ -7,14 +7,31 @@ var playerTwoWins = 0;
 var gameIsWon = false;
 var roundCount = 0;
 
+// convert playerHand from integer to word
+function playersHand(paramHand) {
+	switch(paramHand){
+		case 0:
+		return paramHand = "Rock";
+		break;
+
+		case 1:
+		return paramHand = "Paper";
+		break;
+
+		case 2:
+		return paramHand = "Scissors";
+		break;
+	}	
+}
+
 while(!gameIsWon) {
 	roundCount++;
 	//console.log("roundCount= " + roundCount);
 
 	var playerOneHand = parseInt(Math.random()*10)%3;
 	var playerTwoHand = parseInt(Math.random()*10)%3;
-	console.log("Round " + roundCount + " " + playerOneName + " " + playerOneHand);
-	console.log("Round " + roundCount + " " + playerTwoName + " " + playerTwoHand);
+	console.log("Round " + roundCount + " " + playerOneName + " formed " + playersHand(playerOneHand));
+	console.log("Round " + roundCount + " " + playerTwoName + " formed " + playersHand(playerTwoHand));
 	
 	if ((playerOneHand === 0 && playerTwoHand === 0) || (playerOneHand === 1 && playerTwoHand === 1) || (playerOneHand === 2 && playerTwoHand === 2)) {
 		console.log("Round " + roundCount + " is a draw");
