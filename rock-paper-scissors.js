@@ -7,23 +7,6 @@ var playerTwoWins = 0;
 var gameIsWon = false;
 var roundCount = 0;
 
-// convert playerHand from integer to word
-function playersHand(paramHand) {
-	switch(paramHand){
-		case 0:
-		return paramHand = "Rock";
-		break;
-
-		case 1:
-		return paramHand = "Paper";
-		break;
-
-		case 2:
-		return paramHand = "Scissors";
-		break;
-	}	
-}
-
 while(!gameIsWon) {
 	roundCount++;
 	//console.log("roundCount= " + roundCount);
@@ -57,4 +40,21 @@ while(!gameIsWon) {
 		}	
 	}
 
+}
+
+// convert playerHand from integer to word
+function playersHand(paramHand) {
+	switch(paramHand){
+		case 0:
+		return paramHand = "Rock";
+		break;
+
+		case 1:
+		return paramHand = "Paper";
+		break;
+
+		case 2:
+		return paramHand = "Scissors";
+		break;
+	}	
 }
