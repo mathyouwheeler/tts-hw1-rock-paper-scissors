@@ -1,60 +1,41 @@
-var playerOneName = "Matthew";
-var playerTwoName = "Edwin";
-
-var playerOneWins = 0;
-var playerTwoWins = 0;
-
+var player1Name = "Jon";
+var player2Name = "Joe";
+var player1Hand;
+var player2Hand;
+var player1WinCount = 0;
+var player2WinCount = 0;
+var gameRoundCount = 0;
 var gameIsWon = false;
-var roundCount = 0;
+var hands = ["rock", "paper", "scissors"];
 
-while(!gameIsWon) {
-	roundCount++;
-	//console.log("roundCount= " + roundCount);
-
-	var playerOneHand = parseInt(Math.random()*10)%3;
-	var playerTwoHand = parseInt(Math.random()*10)%3;
-	console.log("Round " + roundCount + " " + playerOneName + " formed " + playersHand(playerOneHand));
-	console.log("Round " + roundCount + " " + playerTwoName + " formed " + playersHand(playerTwoHand));
-	
-	if ((playerOneHand === 0 && playerTwoHand === 0) || (playerOneHand === 1 && playerTwoHand === 1) || (playerOneHand === 2 && playerTwoHand === 2)) {
-		console.log("Round " + roundCount + " is a draw");
-	}
-
-	else if ((playerOneHand === 0 && playerTwoHand === 1) || (playerOneHand === 1 && playerTwoHand === 2) || (playerOneHand === 2 && playerTwoHand === 0)) {
-		console.log("Round " + roundCount + " winner is= " + playerTwoName);
-		playerTwoWins++;
-	}
-	
-	else {
-		console.log("Round " + roundCount + " winner is= " + playerOneName);
-		playerOneWins++;
-	}
-
-	if (playerOneWins === 3 || playerTwoWins === 3) {
-		gameIsWon = true;
-
-		if (playerOneWins === 3) {
-			console.log("Game Over! " + playerOneName + " wins the game!");
-		} else {
-			console.log("Game Over! " + playerTwoName + " wins the game!");
-		}	
-	}
-
+while (!gameIsWon) {
+	player1Hand = generateHand();
+	player2Hand = generateHand();
+	determineRoundWinner(player1Hand, player2Hand);
 }
 
-// convert playerHand from integer to word
-function playersHand(paramHand) {
-	switch(paramHand){
-		case 0:
-		return paramHand = "Rock";
-		break;
+function generateHand() {
+	var idx = parseInt(Math.random()*10)%3;
+	return hands[idx];
+}
 
-		case 1:
-		return paramHand = "Paper";
-		break;
+function determineRoundWinner(h1, h2) {
+	var roundWinner;
+	if (h1 === h2) {
+		console.log("draw");
+	} else if ((h1 === "rock" && h2 === "paper") || (h1 === "paper" && h2 === "scissor") || (h1 === "scissor" && h2 === "rock")) {
+			console.log("Round " + gameRoundCount + " winner is= " + player2Name);
+			player2WinCount++;
+			roundWinner = player2Name;					
+	} else {
+		console.log("Round " + gameRoundCount + " winner is= " + player1Name);
+		player1WinCount++;
+		roundWinner = player1Name;		
+	}
+	isThereAGameWinner(roundWinner);
+}
 
-		case 2:
-		return paramHand = "Scissors";
-		break;
-	}	
+function isThereAGameWinner(rwn) {
+	gameIsWon = player1WinCount === 3 || player2WinCount === 3;
+	console.log((gameIsWon ? rwn + " has won the game!": "Game is not complete."));
 }
